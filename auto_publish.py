@@ -1,31 +1,37 @@
-
 import subprocess
 import datetime
 
-def auto_publish():
-    """
-    Automatically stages changes in index.html, creates a commit message
-    with today's date, and pushes the changes to the remote GitHub repository.
-    Includes error handling for Git commands.
-    """
-    today = datetime.date.today().strftime("%Y-%m-%d")
-    commit_message = f"Auto-updated deals on {today}"
-
+def run_git(command):
     try:
-        # Stage changes in index.html
-        add_result = subprocess.run(["git", "add", "."], check=True, capture_output=True, text=True)
-        print(f"Staged changes: {add_result.stdout.strip()}")
-
-        commit_result = subprocess.run(["git", "commit", "-m", commit_message], check=True, capture_output=True, text=True)
-        print(f"Created commit: {commit_result.stdout.strip()}")
-
-        push_result = subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True, text=True)
-        print(f"Pushed changes: {push_result.stdout.strip()}")
-
+        result = subprocess.run(command, check=True, text=True, shell=True, capture_output=True)
+        print(f"✅ Done: {command}")
+        return True, result.stdout
     except subprocess.CalledProcessError as e:
-        print(f"Error executing Git command: {e.cmd} - {e.stderr.strip()}")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+        print(f"❌ ERROR in [{command}]: {e.stderr}")
+        return False, e.stderr
+
+def auto_publish():
+    print("🚀 Starting Nexo Shopping Auto-Publish...")
+
+    # Step 1: Nayi files ko add karo
+    run_git("git add .")
+    
+    # Check if there's actually anything new to commit
+    success, status_output = run_git("git status --porcelain")
+    
+    if not status_output.strip():
+        print("ℹ️ No new changes detected. Skipping publish.")
+        return
+
+    # Step 2: Aaj ki date aur time ke sath commit message banao
+    current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    commit_msg = f'git commit -m "Auto-updated deals on {current_time}"'
+    
+    if run_git(commit_msg)[0]:
+        # Step 3: GitHub par bhej do!
+        print("⏳ Pushing code to GitHub... Please wait.")
+        if run_git("git push origin main")[0]: 
+            print("🎉 BINGO! Code successfully GitHub (aur Vercel) par push ho gaya hai!")
 
 if __name__ == "__main__":
     auto_publish()
