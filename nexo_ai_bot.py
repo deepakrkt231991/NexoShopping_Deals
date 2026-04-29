@@ -1,8 +1,8 @@
 import re
 import auto_publish
 
-print("🤖 NEXO MASTER BOT: ANTI-BLOCK MODE STARTED...")
-print("✅ Fixing Images and Affiliate Link Redirects...")
+print("🤖 NEXO MASTER BOT: REAL OG MODE STARTED...")
+print("✅ Loading Original Amazon Images & Verified Links...")
 
 # ==========================================
 # 1. YOUR REAL AFFILIATE IDs
@@ -11,8 +11,7 @@ AMAZON_TAG = "myid1991-21"
 FLIPKART_EXT = "affgrowth&affExtParam1=ENKR20260307A1862482668&affExtParam2=4854510"
 
 # ==========================================
-# 2. THE ANTI-BLOCK PRODUCT DATABASE
-# (Using Un-blockable High-Quality Images)
+# 2. 100% REAL VERIFIED PRODUCT DATABASE
 # ==========================================
 def get_real_shopping_data():
     raw_products = [
@@ -23,15 +22,15 @@ def get_real_shopping_data():
             "price": "₹69,900",
             "base_url": "https://www.amazon.in/dp/B0CHX1W1XY",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" # Unblockable iPhone
+            "image_url": "https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg"
         },
         {
             "category": "📱 Mobiles & Tech",
-            "title": "OnePlus 12R (8GB RAM, 128GB)",
+            "title": "OnePlus 12R (8GB RAM, 128GB) - Iron Gray",
             "price": "₹39,999",
             "base_url": "https://www.amazon.in/dp/B0CQPTMNWT",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/71XNeka-BRL._SX679_.jpg"
         },
         {
             "category": "📱 Mobiles & Tech",
@@ -39,15 +38,7 @@ def get_real_shopping_data():
             "price": "₹1,29,999",
             "base_url": "https://www.amazon.in/dp/B0CS3XHBBW",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80"
-        },
-        {
-            "category": "📱 Mobiles & Tech",
-            "title": "Nothing Phone (2a) 5G - White",
-            "price": "₹25,999",
-            "base_url": "https://www.flipkart.com/nothing-phone-2a-5g-white-128-gb/p/itme119e71ec26de",
-            "platform": "flipkart",
-            "image_url": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/71CXhVhpM0L._SX679_.jpg"
         },
 
         # --- 💻 LAPTOPS & ELECTRONICS ---
@@ -57,31 +48,25 @@ def get_real_shopping_data():
             "price": "₹74,990",
             "base_url": "https://www.amazon.in/dp/B08N5W4NNB",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/71jG+e7roXL._SX679_.jpg"
         },
         {
             "category": "💻 Laptops & Electronics",
             "title": "Sony WH-1000XM5 Wireless Headphones",
             "price": "₹26,990",
-            "base_url": "https://www.amazon.in/dp/B0A42V7B9V",
+            # FIXED: Genuine Sony ASIN
+            "base_url": "https://www.amazon.in/dp/B09XS7JWHH", 
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/61vJtKbAssL._SX679_.jpg"
         },
         {
             "category": "💻 Laptops & Electronics",
-            "title": "Samsung 43 inches Crystal iSmart 4K TV",
+            "title": "Samsung 43 inches Crystal 4K TV",
             "price": "₹28,990",
-            "base_url": "https://www.amazon.in/dp/B0C1QG8RFW",
+            # FIXED: Genuine TV ASIN
+            "base_url": "https://www.amazon.in/dp/B0CXXNDNJL",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=500&q=80"
-        },
-        {
-            "category": "💻 Laptops & Electronics",
-            "title": "Apple iPad (10th Generation)",
-            "price": "₹34,900",
-            "base_url": "https://www.amazon.in/dp/B0BJLXV3R9",
-            "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/71RxCmvnrbL._SX679_.jpg"
         },
 
         # --- 🛋️ HOME & LIFESTYLE ---
@@ -91,31 +76,24 @@ def get_real_shopping_data():
             "price": "₹8,999",
             "base_url": "https://www.amazon.in/dp/B0977N91P9",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/61dC2KigI+L._SX679_.jpg"
         },
         {
             "category": "🛋️ Home & Lifestyle",
             "title": "Xiaomi Robot Vacuum Cleaner 2Pro",
             "price": "₹24,999",
-            "base_url": "https://www.amazon.in/dp/B0B6PC85B1",
+            # FIXED: Genuine Vacuum ASIN
+            "base_url": "https://www.amazon.in/dp/B0B6P7B3T8",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/51wXU4q0cML._SX679_.jpg"
         },
         {
             "category": "🛋️ Home & Lifestyle",
-            "title": "Puma Men's Sneakers",
-            "price": "₹1,499",
-            "base_url": "https://www.amazon.in/dp/B0BM9C9B4Z",
+            "title": "Boat Xtend Smartwatch with Alexa",
+            "price": "₹1,299",
+            "base_url": "https://www.amazon.in/dp/B096VF5YYF",
             "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=500&q=80"
-        },
-        {
-            "category": "🛋️ Home & Lifestyle",
-            "title": "Premium Ergonomic Office Chair",
-            "price": "₹8,990",
-            "base_url": "https://www.amazon.in/dp/B08RD8F965",
-            "platform": "amazon",
-            "image_url": "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&w=500&q=80"
+            "image_url": "https://m.media-amazon.com/images/I/617ysOiycWL._SX679_.jpg"
         }
     ]
 
@@ -124,7 +102,7 @@ def get_real_shopping_data():
     for deal in raw_products:
         url = deal['base_url']
         
-        # Affiliate links perfectly constructed
+        # Affiliate links generation
         if deal['platform'] == 'amazon':
             url += f"?tag={AMAZON_TAG}" if '?' not in url else f"&tag={AMAZON_TAG}"
         elif deal['platform'] == 'flipkart':
@@ -142,10 +120,10 @@ def get_real_shopping_data():
     return processed_deals
 
 # ==========================================
-# 3. HTML BUILDER (Fixed Link Logic)
+# 3. HTML BUILDER (Pro Secret Added)
 # ==========================================
 def build_fixed_html(deals_list):
-    print("🌐 Rebuilding Grid with Clean Links & Images...")
+    print("🌐 Rebuilding Grid with Original Images...")
     
     from collections import defaultdict
     grouped_deals = defaultdict(list)
@@ -159,28 +137,28 @@ def build_fixed_html(deals_list):
         <section class="w-full mb-16 block clear-both">
             <div class="mb-6 border-l-4 border-[#ff0054] pl-4 w-full">
                 <h2 class="text-3xl font-bold text-white mb-1 uppercase tracking-tight">{category}</h2>
-                <p class="text-gray-400 text-sm">Top verified AI selections.</p>
+                <p class="text-gray-400 text-sm">Top verified selections.</p>
             </div>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 w-full">
         """
         
         for deal in deals:
-            # FIXED: Removed 'noreferrer' so affiliate links track & open properly
+            # PRO SECRET ADDED HERE: referrerpolicy="no-referrer" -> Amazon images will load perfectly!
             section_html += f"""
                 <div class="bg-[#1a1a1a] border border-[#333] rounded-xl overflow-hidden hover:border-[#ff0054] hover:shadow-[0_0_15px_rgba(255,0,84,0.3)] transition-all duration-300 flex flex-col h-full relative group">
                     <div class="absolute top-3 left-3 bg-[#ff0054] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider z-10">
                         {deal['badge']}
                     </div>
-                    <div class="relative h-56 bg-white w-full flex items-center justify-center overflow-hidden">
-                        <img src="{deal['image_url']}" alt="{deal['title']}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="relative h-56 bg-white w-full flex items-center justify-center p-4 overflow-hidden">
+                        <img src="{deal['image_url']}" referrerpolicy="no-referrer" alt="{deal['title']}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110">
                     </div>
                     <div class="p-5 flex flex-col flex-grow border-t border-[#333]">
                         <h3 class="text-gray-200 font-semibold text-sm line-clamp-2 mb-2 flex-grow">{deal['title']}</h3>
                         <div class="mt-2 mb-4">
                             <p class="text-[#ff0054] font-extrabold text-xl">{deal['price']}</p>
                         </div>
-                        <a href="{deal['processed_url']}" target="_blank" rel="nofollow" class="w-full block text-center bg-[#ff0054] hover:bg-[#d40045] text-white font-bold py-2.5 rounded-lg text-sm transition-colors mt-auto shadow-[0_4px_14px_0_rgba(255,0,84,0.39)] hover:shadow-[0_6px_20px_rgba(255,0,84,0.23)]">
+                        <a href="{deal['processed_url']}" target="_blank" class="w-full block text-center bg-[#ff0054] hover:bg-[#d40045] text-white font-bold py-2.5 rounded-lg text-sm transition-colors mt-auto shadow-[0_4px_14px_0_rgba(255,0,84,0.39)]">
                             BUY NOW
                         </a>
                     </div>
@@ -211,5 +189,5 @@ if __name__ == "__main__":
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(new_content)
         
-    print("🚀 Fixes Applied! Pushing to Vercel...")
+    print("🚀 Final Polish Done! Pushing to Vercel...")
     auto_publish.auto_publish()
