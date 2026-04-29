@@ -1,8 +1,8 @@
 import re
 import auto_publish
 
-print("🤖 NEXO MASTER BOT: PRODUCTION MODE STARTED...")
-print("✅ CPAGrip Removed. Loading 100% REAL Amazon/Flipkart Products...")
+print("🤖 NEXO MASTER BOT: ANTI-BLOCK MODE STARTED...")
+print("✅ Fixing Images and Affiliate Link Redirects...")
 
 # ==========================================
 # 1. YOUR REAL AFFILIATE IDs
@@ -11,8 +11,8 @@ AMAZON_TAG = "myid1991-21"
 FLIPKART_EXT = "affgrowth&affExtParam1=ENKR20260307A1862482668&affExtParam2=4854510"
 
 # ==========================================
-# 2. THE REAL PRODUCT DATABASE
-# (No scraping risk, 100% real images and exact links)
+# 2. THE ANTI-BLOCK PRODUCT DATABASE
+# (Using Un-blockable High-Quality Images)
 # ==========================================
 def get_real_shopping_data():
     raw_products = [
@@ -23,23 +23,23 @@ def get_real_shopping_data():
             "price": "₹69,900",
             "base_url": "https://www.amazon.in/dp/B0CHX1W1XY",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71657TiFeHL._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80" # Unblockable iPhone
         },
         {
             "category": "📱 Mobiles & Tech",
-            "title": "OnePlus 12R (8GB RAM, 128GB) - Iron Gray",
+            "title": "OnePlus 12R (8GB RAM, 128GB)",
             "price": "₹39,999",
             "base_url": "https://www.amazon.in/dp/B0CQPTMNWT",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71XNeka-BRL._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "📱 Mobiles & Tech",
-            "title": "Samsung Galaxy S24 Ultra 5G (Titanium Black)",
+            "title": "Samsung Galaxy S24 Ultra 5G",
             "price": "₹1,29,999",
             "base_url": "https://www.amazon.in/dp/B0CS3XHBBW",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71CXhVhpM0L._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "📱 Mobiles & Tech",
@@ -47,7 +47,7 @@ def get_real_shopping_data():
             "price": "₹25,999",
             "base_url": "https://www.flipkart.com/nothing-phone-2a-5g-white-128-gb/p/itme119e71ec26de",
             "platform": "flipkart",
-            "image_url": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/7/k/8/-original-imagzjgjcwzbffze.jpeg"
+            "image_url": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80"
         },
 
         # --- 💻 LAPTOPS & ELECTRONICS ---
@@ -57,23 +57,23 @@ def get_real_shopping_data():
             "price": "₹74,990",
             "base_url": "https://www.amazon.in/dp/B08N5W4NNB",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71TPda7cwUL._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "💻 Laptops & Electronics",
-            "title": "Sony WH-1000XM5 Wireless Active Noise Cancelling Headphones",
+            "title": "Sony WH-1000XM5 Wireless Headphones",
             "price": "₹26,990",
             "base_url": "https://www.amazon.in/dp/B0A42V7B9V",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/61FwW6u3x9L._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "💻 Laptops & Electronics",
-            "title": "Samsung 108 cm (43 inches) Crystal iSmart 4K TV",
+            "title": "Samsung 43 inches Crystal iSmart 4K TV",
             "price": "₹28,990",
             "base_url": "https://www.amazon.in/dp/B0C1QG8RFW",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/81PqR+mB-FL._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "💻 Laptops & Electronics",
@@ -81,7 +81,7 @@ def get_real_shopping_data():
             "price": "₹34,900",
             "base_url": "https://www.amazon.in/dp/B0BJLXV3R9",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/61uA2UVnYWL._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=80"
         },
 
         # --- 🛋️ HOME & LIFESTYLE ---
@@ -91,7 +91,7 @@ def get_real_shopping_data():
             "price": "₹8,999",
             "base_url": "https://www.amazon.in/dp/B0977N91P9",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/61dC2KigI+L._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "🛋️ Home & Lifestyle",
@@ -99,33 +99,32 @@ def get_real_shopping_data():
             "price": "₹24,999",
             "base_url": "https://www.amazon.in/dp/B0B6PC85B1",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/51wXU4q0cML._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "🛋️ Home & Lifestyle",
-            "title": "Puma Men's Dazzler Sneakers",
+            "title": "Puma Men's Sneakers",
             "price": "₹1,499",
             "base_url": "https://www.amazon.in/dp/B0BM9C9B4Z",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71k1oW7G+KL._SY695_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=500&q=80"
         },
         {
             "category": "🛋️ Home & Lifestyle",
-            "title": "Green Soul Jupiter Superb Office Chair",
+            "title": "Premium Ergonomic Office Chair",
             "price": "₹8,990",
             "base_url": "https://www.amazon.in/dp/B08RD8F965",
             "platform": "amazon",
-            "image_url": "https://m.media-amazon.com/images/I/71rJgD99Q1L._SX679_.jpg"
+            "image_url": "https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&w=500&q=80"
         }
     ]
 
     processed_deals = []
     
-    # 3. AUTOMATIC AFFILIATE LINK GENERATOR
     for deal in raw_products:
         url = deal['base_url']
         
-        # Adding Affiliate tags flawlessly
+        # Affiliate links perfectly constructed
         if deal['platform'] == 'amazon':
             url += f"?tag={AMAZON_TAG}" if '?' not in url else f"&tag={AMAZON_TAG}"
         elif deal['platform'] == 'flipkart':
@@ -143,10 +142,10 @@ def get_real_shopping_data():
     return processed_deals
 
 # ==========================================
-# 4. BUILDING THE UI (PERFECT LAYOUT)
+# 3. HTML BUILDER (Fixed Link Logic)
 # ==========================================
 def build_fixed_html(deals_list):
-    print("🌐 Injecting Real Products into Website Grid...")
+    print("🌐 Rebuilding Grid with Clean Links & Images...")
     
     from collections import defaultdict
     grouped_deals = defaultdict(list)
@@ -167,21 +166,21 @@ def build_fixed_html(deals_list):
         """
         
         for deal in deals:
-            # PERFECT IMAGE SIZING AND WORKING LINKS
+            # FIXED: Removed 'noreferrer' so affiliate links track & open properly
             section_html += f"""
                 <div class="bg-[#1a1a1a] border border-[#333] rounded-xl overflow-hidden hover:border-[#ff0054] hover:shadow-[0_0_15px_rgba(255,0,84,0.3)] transition-all duration-300 flex flex-col h-full relative group">
                     <div class="absolute top-3 left-3 bg-[#ff0054] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider z-10">
                         {deal['badge']}
                     </div>
-                    <div class="relative h-56 bg-white w-full flex items-center justify-center p-4">
-                        <img src="{deal['image_url']}" alt="Product" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110">
+                    <div class="relative h-56 bg-white w-full flex items-center justify-center overflow-hidden">
+                        <img src="{deal['image_url']}" alt="{deal['title']}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
                     </div>
                     <div class="p-5 flex flex-col flex-grow border-t border-[#333]">
                         <h3 class="text-gray-200 font-semibold text-sm line-clamp-2 mb-2 flex-grow">{deal['title']}</h3>
                         <div class="mt-2 mb-4">
                             <p class="text-[#ff0054] font-extrabold text-xl">{deal['price']}</p>
                         </div>
-                        <a href="{deal['processed_url']}" target="_blank" rel="noopener noreferrer" class="w-full block text-center bg-[#ff0054] hover:bg-[#d40045] text-white font-bold py-2.5 rounded-lg text-sm transition-colors mt-auto shadow-[0_4px_14px_0_rgba(255,0,84,0.39)] hover:shadow-[0_6px_20px_rgba(255,0,84,0.23)]">
+                        <a href="{deal['processed_url']}" target="_blank" rel="nofollow" class="w-full block text-center bg-[#ff0054] hover:bg-[#d40045] text-white font-bold py-2.5 rounded-lg text-sm transition-colors mt-auto shadow-[0_4px_14px_0_rgba(255,0,84,0.39)] hover:shadow-[0_6px_20px_rgba(255,0,84,0.23)]">
                             BUY NOW
                         </a>
                     </div>
@@ -195,9 +194,6 @@ def build_fixed_html(deals_list):
         
     return master_html
 
-# ==========================================
-# 5. EXECUTION & AUTO PUBLISH
-# ==========================================
 if __name__ == "__main__":
     final_deals = get_real_shopping_data()
     final_html = build_fixed_html(final_deals)
@@ -215,5 +211,5 @@ if __name__ == "__main__":
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(new_content)
         
-    print("🚀 Real Products Saved! Publishing to Website...")
+    print("🚀 Fixes Applied! Pushing to Vercel...")
     auto_publish.auto_publish()
