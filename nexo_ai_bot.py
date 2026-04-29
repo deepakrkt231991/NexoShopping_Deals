@@ -87,18 +87,31 @@ def get_shopping_deals():
 # 4. HTML BUILDER & AUTO-PUBLISHER
 # ==========================================
 def update_website(all_deals):
-    print("🌐 Updating index.html with new live data...")
+    print("🌐 Updating index.html with Premium Dark/Pink UI...")
     html_cards = []
     
     for deal in all_deals:
+        # Modern Dark Card with Neon Pink Accents matching your Figma design
         card = f"""
-        <div class="product-card" style="position: relative;">
-            <span style="position: absolute; top: 10px; right: 10px; background: #e44d26; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em;">{deal['badge']}</span>
-            <img src="{deal['image_url']}" alt="Offer Image">
-            <div class="product-card-content">
-                <h3 style="font-size: 1.1em;">{deal['title']}</h3>
-                <p class="price">{deal['price']}</p>
-                <a href="{deal['processed_url']}" target="_blank" rel="nofollow">Claim Offer</a>
+        <div class="bg-[#1a1a1a] border border-[#333] rounded-xl overflow-hidden hover:border-[#ff0054] hover:shadow-[0_0_15px_rgba(255,0,84,0.3)] transition-all duration-300 flex flex-col h-full relative group">
+            <div class="absolute top-3 left-3 bg-[#ff0054] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider z-10">
+                {deal['badge']}
+            </div>
+            
+            <div class="relative h-48 bg-white p-4 w-full flex items-center justify-center">
+                <img src="{deal['image_url']}" alt="{deal['title']}" class="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110">
+            </div>
+            
+            <div class="p-5 flex flex-col flex-grow border-t border-[#333]">
+                <h3 class="text-gray-200 font-semibold text-sm line-clamp-2 mb-2 flex-grow">{deal['title']}</h3>
+                
+                <div class="mt-2 mb-4">
+                    <p class="text-[#ff0054] font-extrabold text-xl">{deal['price']}</p>
+                </div>
+                
+                <a href="{deal['processed_url']}" target="_blank" rel="nofollow" class="w-full block text-center bg-[#ff0054] hover:bg-[#d40045] text-white font-bold py-2.5 rounded-lg text-sm transition-colors mt-auto">
+                    GET DEAL NOW
+                </a>
             </div>
         </div>
         """
@@ -107,16 +120,17 @@ def update_website(all_deals):
     with open("index.html", "r", encoding="utf-8") as f:
         content = f.read()
 
+    # Fixed the critical Regex bug here
     new_content = re.sub(
-        r'().*?()', 
-        r'\1\n' + "".join(html_cards) + r'\n        \2', 
+        r'(<!-- DEALS_START -->).*?(<!-- DEALS_END -->)', 
+        r'\1\n' + "\n".join(html_cards) + r'\n            <!-- DEALS_END -->', 
         content, 
         flags=re.DOTALL
     )
 
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(new_content)
-    print("✅ Website Updated Successfully!")
+    print("✅ Premium UI Applied Successfully!")
 
 if __name__ == "__main__":
     trading_data = get_trading_news()
